@@ -1,0 +1,9 @@
+<template name="jcInput">
+  <div>filter: {{filter}}</div>
+  <input type={{type}} />
+  <ul>
+    {{#each matches}}
+    <li>{{> UI.contentBlock this}}</li>
+    {{/each}}
+  </ul>
+</template>

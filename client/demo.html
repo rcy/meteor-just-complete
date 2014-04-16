@@ -1,0 +1,11 @@
+<body>
+  {{> demo}}
+</body>
+
+<template name="demo">
+  {{#jcInput type="text" filter="myFilter"}}
+  <p>{{name}}</p>
+  {{else}}
+  no matches
+  {{/jcInput}}
+</template>
