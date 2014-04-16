@@ -1,13 +1,15 @@
 <body>
-  {{> demo}}
+  <div class="container">
+    {{> demo}}
+  </div>
 </body>
 
 <template name="demo">
   {{#jcInput class="form-control" type="text" filter="myFilter"}}
-  <h1>{{name}}</h1>
-  <p>{{team}}</p>
-  {{else}}
-  no matches
+    <h1>{{name}}</h1>
+    <p>{{team}}</p>
+    {{else}}
+    no matches
   {{/jcInput}}
 
   more text goes here
