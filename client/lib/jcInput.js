@@ -1,18 +1,32 @@
+RegExp.quote = function(str) {
+    return (str+'').replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1");
+};
+
+
 Template.jcInput.created = function () {
   this.data.query = 'jc-' + Random.id();
   Session.set(this.data.query);
 };
 Template.jcInput.destroyed = function () {
   Session.set(this.data.query);
+};
+
+
+function filter (collection, fields, query) {
+  query = '\\b' + RegExp.quote(query);
+  var expressions = fields.map(function (f) {
+    var obj = {};
+    obj[f] = {$regex: query, $options: 'i'};
+    return obj;
+  });
+  return window[collection].find({$or: expressions});
 }
 
 Template.jcInput.helpers({
   matches: function () {
-    console.log('matches', this, filter);
-    var filter = JC._filters[this.filter];
     var query = Session.get(this.query);
-    if (filter && query)
-      return filter(query);
+    if (this.collection && this.fields && query)
+      return filter(this.collection, this.fields.split(/[, ]+/), query);
     else
       return [];
   }

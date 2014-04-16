@@ -5,10 +5,8 @@
 </body>
 
 <template name="demo">
-  {{#jcInput name="player" class="form-control" type="text" collection="Players" filter="myFilter"}}
-    <h1>{{name}}</h1>
-    <p>{{team}}</p>
-    {{else}}
-    no matches
+  {{#jcInput name="player" class="form-control" type="text" collection="Players" fields="name, team"}}
+  <h1>{{name}}</h1>
+  <p>{{team}} <strong>{{number}}</strong></p>
   {{/jcInput}}
 </template>
