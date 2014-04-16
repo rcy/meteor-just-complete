@@ -5,7 +5,8 @@
 </body>
 
 <template name="demo">
-  {{#jcInput name="player" class="form-control" type="text" collection="Players" fields="name, team"}}
+  <input placeholder="id will go here" id="player" name="playerId" />
+  {{#jcInput class="form-control" type="text" collection="Players" fields="name, team" hiddenId="player"}}
   <h1>{{name}}</h1>
   <p>{{team}} <strong>{{number}}</strong></p>
   {{/jcInput}}

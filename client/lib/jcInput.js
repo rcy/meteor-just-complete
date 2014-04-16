@@ -53,7 +53,8 @@ Template.jcInput.events({
     var id = $(e.currentTarget).data('match');
     var doc = window[t.data.collection].findOne(id);
     $(t.find('input.jc')).val(doc[t.data.fields[0]]);
-    $(t.find('input[type=hidden]')).val(doc._id);
+    if (t.data.hiddenId)
+      $('#'+t.data.hiddenId).val(doc._id);
     Session.set(t.data.query);
   }
 });
