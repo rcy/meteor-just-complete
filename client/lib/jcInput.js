@@ -6,6 +6,17 @@ RegExp.quote = function(str) {
 Template.jcInput.created = function () {
   this.data.query = 'jc-' + Random.id();
   Session.set(this.data.query);
+
+  if (!Match.test(this.data.fields, String))
+    throw new Meteor.Error('jcInput block helper missing fields');
+
+  // The fields are comma/space seperated strings that determine which
+  // fields in the collection to search.  The first field will be the
+  // one inserted into the text field for display.
+  this.data.fields = this.data.fields.split(/[, ]+/);
+
+  if (!Match.test(this.data.collection, String))
+    throw new Meteor.Error('jcInput collection not String');
 };
 Template.jcInput.destroyed = function () {
   Session.set(this.data.query);
@@ -26,7 +37,7 @@ Template.jcInput.helpers({
   matches: function () {
     var query = Session.get(this.query);
     if (this.collection && this.fields && query)
-      return filter(this.collection, this.fields.split(/[, ]+/), query);
+      return filter(this.collection, this.fields, query);
     else
       return [];
   }
@@ -41,7 +52,7 @@ Template.jcInput.events({
     e.preventDefault();
     var id = $(e.currentTarget).data('match');
     var doc = window[t.data.collection].findOne(id);
-    $(t.find('input.jc')).val(doc.name);
+    $(t.find('input.jc')).val(doc[t.data.fields[0]]);
     $(t.find('input[type=hidden]')).val(doc._id);
     Session.set(t.data.query);
   }
