@@ -1,8 +1,8 @@
 <template name="jcInput">
-  <div class="jc">
+  <div class="wrapper">
     <input name="{{name}}" type="hidden" class="jcHide" />
     <input class="jcShow {{class}}" type="{{type}}"/>
-    <ul class="list-unstyled">
+    <ul class="jcList list-unstyled">
       {{#each matches}}
         <li data-match="{{_id}}">
           {{> UI.contentBlock this}}

@@ -1,4 +1,13 @@
-.jc ul {
-    background: #fafafa;
+.jcList {
+    background: #fafaff;
     position: absolute;
+}
+
+.jcList {
+    z-index: 100000;
+}
+
+.jcList li:hover {
+    background: #afafaf;
+    cursor: pointer;
 }
