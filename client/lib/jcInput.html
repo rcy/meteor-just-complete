@@ -1,10 +1,12 @@
 <template name="jcInput">
   <div class="jc">
-    <input name="{{name}}" type="hidden" />
-    <input class="jc {{class}}" type="{{type}}"/>
-    <ul class="nav nav-list">
+    <input name="{{name}}" type="hidden" class="jcHide" />
+    <input class="jcShow {{class}}" type="{{type}}"/>
+    <ul class="list-unstyled">
       {{#each matches}}
-      <li data-match="{{_id}}"><a href="#">{{> UI.contentBlock this}}</a></li>
+        <li data-match="{{_id}}">
+          {{> UI.contentBlock this}}
+        </li>
       {{/each}}
     </ul>
   </div>

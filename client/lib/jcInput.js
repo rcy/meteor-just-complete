@@ -44,17 +44,15 @@ Template.jcInput.helpers({
 });
 
 Template.jcInput.events({
-  'keyup input.jc': function (e) {
+  'keyup input.jcShow': function (e) {
     Session.set(this.query, $(e.target).val());
-    console.log('keyup', this);
   },
   'click [data-match]': function (e, t) {
     e.preventDefault();
     var id = $(e.currentTarget).data('match');
     var doc = window[t.data.collection].findOne(id);
-    $(t.find('input.jc')).val(doc[t.data.fields[0]]);
-    if (t.data.hiddenId)
-      $('#'+t.data.hiddenId).val(doc._id);
+    $(t.find('input.jcShow')).val(doc[t.data.fields[0]]);
+    $(t.find('input.jcHide')).val(doc._id);
     Session.set(t.data.query);
   }
 });
