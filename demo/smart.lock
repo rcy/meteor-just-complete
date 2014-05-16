@@ -1,0 +1,15 @@
+{
+  "meteor": {},
+  "dependencies": {
+    "basePackages": {
+      "just-complete": {
+        "path": ".."
+      }
+    },
+    "packages": {
+      "just-complete": {
+        "path": ".."
+      }
+    }
+  }
+}
