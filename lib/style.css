@@ -1,13 +1,14 @@
 .jcList {
-    background: #fafaff;
+    background: #ffffff;
     position: absolute;
-}
-
-.jcList {
     z-index: 100000;
 }
 
 .jcList li:hover {
-    background: #afafaf;
+    background: #f0f0f0;
     cursor: pointer;
+}
+
+.jcList li {
+    padding: 6px;
 }
